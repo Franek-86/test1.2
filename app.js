@@ -1,12 +1,12 @@
 
 let url = "http://time.jsontest.com";
 
-let myDate = new Date().getTime();
-console.log('my date', myDate);
-const myTime = new Date(myDate);
-console.log('my date',new Date(myTime ));
+const time = document.querySelector(".time");
+console.log(time)
 
-const fetch  = fetch(url)
+const testFunk = ()=> {
+
+  fetch(url)
   .then(response => {
     // Check if the response status is OK (status code 200-299)
     if (!response.ok) {
@@ -21,8 +21,11 @@ const fetch  = fetch(url)
     console.log('Data:', data);
     const providedDateTime = new Date(`${data.date} ${data.time}`);
     console.log('this',providedDateTime);
-    let myDate = new Date();
-    console.log(myDate - providedDateTime) / 1000;
+    let myDateTime = new Date();
+    const discrepancy = Math.floor((myDateTime - providedDateTime) / 1000)
+    console.log(discrepancy)
+    time.textContent = discrepancy;
+
 
   })
   .catch(error => {
@@ -30,7 +33,11 @@ const fetch  = fetch(url)
     console.error('Error:', error);
   });
 
-  console.log(test)
+
+
+}
+
+
 
  
 
